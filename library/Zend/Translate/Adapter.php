@@ -350,7 +350,7 @@ abstract class Zend_Translate_Adapter {
         foreach ($options as $key => $option) {
             if ($key == 'locale') {
                 $locale = $option;
-            } else if ((isset($this->_options[$key]) && ($this->_options[$key] != $option)) ||
+            } else if ((isset($this->_options[$key]) && ($this->_options[$key] !== $option)) ||
                     !isset($this->_options[$key])) {
                 if (($key == 'log') && !($option instanceof Zend_Log)) {
                     require_once 'Zend/Translate/Exception.php';
