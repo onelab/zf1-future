@@ -357,6 +357,12 @@ abstract class Zend_Translate_Adapter {
                     throw new Zend_Translate_Exception('Instance of Zend_Log expected for option log');
                 }
 
+                if ((is_object($this->_options[$key]) && is_object($option))
+                    && (sha1(serialize($this->_options[$key])) == sha1(serialize($option)))
+                ) {
+                    continue;
+                }
+                
                 if ($key == 'cache') {
                     self::setCache($option);
                     continue;
