@@ -130,7 +130,7 @@ class Zend_Service_Delicious
      *
      * @param  string $uname Client user name
      * @param  string $pass  Client password
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function setAuth($uname, $pass)
     {
@@ -182,7 +182,7 @@ class Zend_Service_Delicious
      *
      * @param  string $old Old tag name
      * @param  string $new New tag name
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function renameTag($old, $new)
     {
@@ -214,7 +214,7 @@ class Zend_Service_Delicious
      *
      * @param  string $bundle Name of new bundle
      * @param  array  $tags   Array of tags
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function addBundle($bundle, array $tags)
     {
@@ -230,7 +230,7 @@ class Zend_Service_Delicious
      * Delete a bundle
      *
      * @param  string $bundle Name of bundle to be deleted
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function deleteBundle($bundle)
     {
@@ -245,7 +245,7 @@ class Zend_Service_Delicious
      * Delete a post
      *
      * @param  string $url URL of post to be deleted
-     * @return Zend_Service_Delicious Provides a fluent interface
+     * @return $this
      */
     public function deletePost($url)
     {
@@ -462,7 +462,7 @@ class Zend_Service_Delicious
      * @param   string $path  Path
      * @param   array  $parms Array of GET parameters
      * @param   string $type  Type of a request ("xml"|"json")
-     * @return  mixed  decoded response from web service
+     * @return  array|bool|DomDocument|SimpleXMLElement|StdClass|void|null  decoded response from web service
      * @throws  Zend_Service_Delicious_Exception
      */
     public function makeRequest($path, array $parms = [], $type = 'xml')
@@ -508,7 +508,7 @@ class Zend_Service_Delicious
         switch ($type) {
             case 'xml':
                 $dom = new DOMDocument() ;
-    
+
                 if (!$dom = @Zend_Xml_Security::scan($responseBody, $dom)) {
                     /**
                      * @see Zend_Service_Delicious_Exception

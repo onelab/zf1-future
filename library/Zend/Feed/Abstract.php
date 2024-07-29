@@ -146,7 +146,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      */
     public function __sleep()
     {
-        $this->_element = $this->saveXML();
+        $this->_element = $this->saveXml();
 
         return ['_element'];
     }
@@ -174,7 +174,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      *
      * @return integer Entry count.
      */
-    public function count()
+    public function count(): int
     {
         return count($this->_entries);
     }
@@ -185,7 +185,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      *
      * @return void
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->_entryIndex = 0;
     }
@@ -196,6 +196,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      *
      * @return mixed The current row, or null if no rows.
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         return new $this->_entryClassName(
@@ -205,10 +206,9 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
 
 
     /**
-     * Required by the Iterator interface.
-     *
-     * @return mixed The current row number (starts at 0), or NULL if no rows
+     * @return int
      */
+    #[\ReturnTypeWillChange]
     public function key()
     {
         return $this->_entryIndex;
@@ -216,11 +216,9 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
 
 
     /**
-     * Required by the Iterator interface.
-     *
-     * @return mixed The next row, or null if no more rows.
+     * @return void
      */
-    public function next()
+    public function next(): void
     {
         ++$this->_entryIndex;
     }
@@ -231,7 +229,7 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      *
      * @return boolean Whether the iteration is valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return 0 <= $this->_entryIndex && $this->_entryIndex < $this->count();
     }
@@ -265,8 +263,8 @@ abstract class Zend_Feed_Abstract extends Zend_Feed_Element implements Iterator,
      * Import a feed from a string
      *
      * Protects against XXE attack vectors.
-     * 
-     * @param  string $feed 
+     *
+     * @param  string $feed
      * @return string
      * @throws Zend_Feed_Exception on detection of an XXE vector
      */

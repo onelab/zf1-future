@@ -111,7 +111,7 @@ class Zend_View_Helper_Navigation_Links
      *
      * @param  Zend_Navigation_Container $container  [optional] container to
      *                                               operate on
-     * @return Zend_View_Helper_Navigation_Links     fluent interface, returns
+     * @return $this
      *                                               self
      */
     public function links(Zend_Navigation_Container $container = null)
@@ -179,7 +179,7 @@ class Zend_View_Helper_Navigation_Links
      * {@link renderLink()} method.
      *
      * @param  int $renderFlag                    render flag
-     * @return Zend_View_Helper_Navigation_Links  fluent interface, returns self
+     * @return $this
      */
     public function setRenderFlag($renderFlag)
     {
@@ -264,7 +264,7 @@ class Zend_View_Helper_Navigation_Links
      * @param  Zend_Navigation_Page $page       page to find relations for
      * @param  string              $rel         relation, "rel" or "rev"
      * @param  string              $type        link type, e.g. 'start', 'next'
-     * @return Zend_Navigaiton_Page|array|null  page(s), or null if not found
+     * @return array|Zend_Navigation_Page|null  page(s), or null if not found
      * @throws Zend_View_Exception              if $rel is not "rel" or "rev"
      */
     public function findRelation(Zend_Navigation_Page $page, $rel, $type)

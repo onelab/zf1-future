@@ -121,7 +121,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
      * Whether or not path is a straight XPath expression
      *
      * @param  bool $flag
-     * @return Zend_Test_PHPUnit_Constraint_DomQuery
+     * @return Zend_Test_PHPUnit_Constraint_DomQuery34
      */
     public function setUseXpath($flag = true)
     {
@@ -133,7 +133,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery34 extends PHPUnit_Framework_Constrai
      * Evaluate an object to see if it fits the constraints
      *
      * @param  string $other String to examine
-     * @param  null|string Assertion type
+     * @param  null|string $assertType Assertion type
      * @return bool
      */
     public function evaluate($other, $assertType = null)

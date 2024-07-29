@@ -106,7 +106,7 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
     /**
      * Returns the haystack option
      *
-     * @return mixed
+     * @return array
      */
     public function getHaystack()
     {
@@ -117,7 +117,7 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
      * Sets the haystack option
      *
      * @param  mixed $haystack
-     * @return Zend_Validate_InArray Provides a fluent interface
+     * @return $this
      */
     public function setHaystack(array $haystack)
     {
@@ -139,7 +139,7 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
      * Sets the strict option
      *
      * @param  boolean $strict
-     * @return Zend_Validate_InArray Provides a fluent interface
+     * @return $this
      */
     public function setStrict($strict)
     {
@@ -161,7 +161,7 @@ class Zend_Validate_InArray extends Zend_Validate_Abstract
      * Sets the recursive option
      *
      * @param  boolean $recursive
-     * @return Zend_Validate_InArray Provides a fluent interface
+     * @return $this
      */
     public function setRecursive($recursive)
     {

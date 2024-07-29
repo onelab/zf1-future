@@ -84,14 +84,14 @@ abstract class Zend_Db_Table_Abstract
     /**
      * Default Zend_Db_Adapter_Abstract object.
      *
-     * @var Zend_Db_Adapter_Abstract
+     * @var Zend_Db_Adapter_Abstract|null
      */
     protected static $_defaultDb;
 
     /**
      * Optional Zend_Db_Table_Definition object
      *
-     * @var unknown_type
+     * @var \Zend_Db_Table_Definition
      */
     protected $_definition = null;
 
@@ -274,7 +274,7 @@ abstract class Zend_Db_Table_Abstract
      * setOptions()
      *
      * @param array $options
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setOptions(Array $options)
     {
@@ -332,7 +332,7 @@ abstract class Zend_Db_Table_Abstract
      * setDefinition()
      *
      * @param Zend_Db_Table_Definition $definition
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefinition(Zend_Db_Table_Definition $definition)
     {
@@ -343,7 +343,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * getDefinition()
      *
-     * @return Zend_Db_Table_Definition|null
+     * @return Zend_Db_Table_Definition
      */
     public function getDefinition()
     {
@@ -354,7 +354,7 @@ abstract class Zend_Db_Table_Abstract
      * setDefinitionConfigName()
      *
      * @param string $definition
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefinitionConfigName($definitionConfigName)
     {
@@ -374,7 +374,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param  string $classname
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setRowClass($classname)
     {
@@ -393,7 +393,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param  string $classname
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setRowsetClass($classname)
     {
@@ -419,7 +419,7 @@ abstract class Zend_Db_Table_Abstract
      * @param string|array $refColumns
      * @param string $onDelete
      * @param string $onUpdate
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function addReference($ruleKey, $columns, $refTableClass, $refColumns,
                                  $onDelete = null, $onUpdate = null)
@@ -443,7 +443,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param array $referenceMap
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setReferences(array $referenceMap)
     {
@@ -487,7 +487,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param  array $dependentTables
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     public function setDependentTables(array $dependentTables)
     {
@@ -508,7 +508,7 @@ abstract class Zend_Db_Table_Abstract
      * set the defaultSource property - this tells the table class where to find default values
      *
      * @param string $defaultSource
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefaultSource($defaultSource = self::DEFAULT_NONE)
     {
@@ -523,7 +523,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * returns the default source flag that determines where defaultSources come from
      *
-     * @return unknown
+     * @return string
      */
     public function getDefaultSource()
     {
@@ -534,7 +534,7 @@ abstract class Zend_Db_Table_Abstract
      * set the default values for the table class
      *
      * @param array $defaultValues
-     * @return Zend_Db_Table_Abstract
+     * @return $this
      */
     public function setDefaultValues(Array $defaultValues)
     {
@@ -566,7 +566,7 @@ abstract class Zend_Db_Table_Abstract
     /**
      * Gets the default Zend_Db_Adapter_Abstract for all Zend_Db_Table objects.
      *
-     * @return Zend_Db_Adapter_Abstract or null
+     * @return Zend_Db_Adapter_Abstract|null
      */
     public static function getDefaultAdapter()
     {
@@ -575,7 +575,7 @@ abstract class Zend_Db_Table_Abstract
 
     /**
      * @param  mixed $db Either an Adapter object, or a string naming a Registry key
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     protected function _setAdapter($db)
     {
@@ -646,7 +646,7 @@ abstract class Zend_Db_Table_Abstract
      * option for the class constructor upon instantiation.
      *
      * @param  mixed $metadataCache Either a Cache object, or a string naming a Registry key
-     * @return Zend_Db_Table_Abstract Provides a fluent interface
+     * @return $this
      */
     protected function _setMetadataCache($metadataCache)
     {
@@ -719,7 +719,7 @@ abstract class Zend_Db_Table_Abstract
      *   Use this for natural keys, for example.
      *
      * @param mixed $sequence
-     * @return Zend_Db_Table_Adapter_Abstract Provides a fluent interface
+     * @return $this
      */
     protected function _setSequence($sequence)
     {
@@ -774,7 +774,7 @@ abstract class Zend_Db_Table_Abstract
         if (! $this->_name) {
             $this->_name = get_class($this);
         } else if (strpos($this->_name, '.')) {
-            list($this->_schema, $this->_name) = explode('.', $this->_name);
+            [$this->_schema, $this->_name] = explode('.', $this->_name);
         }
     }
 
