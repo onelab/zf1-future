@@ -78,7 +78,7 @@ class Zend_Cache_Backend_Static
      *
      * @param  string $name
      * @param  mixed $value
-     * @return Zend_Cache_Backend_Static
+     * @return $this
      */
     public function setOption($name, $value)
     {
@@ -364,7 +364,7 @@ class Zend_Cache_Backend_Static
             if (is_dir($directory)) {
                 foreach (new DirectoryIterator($directory) as $file) {
                     if (true === $file->isFile()) {
-                        if (false === unlink($file->getPathName())) {
+                        if (false === unlink($file->getPathname())) {
                             return false;
                         }
                     }
@@ -479,7 +479,7 @@ class Zend_Cache_Backend_Static
      * should be completely cleaned as the mapping of tags to caches will
      * have been irrevocably lost.
      *
-     * @param  Zend_Cache_Core
+     * @param  Zend_Cache_Core $cache
      * @return void
      */
     public function setInnerCache(Zend_Cache_Core $cache)

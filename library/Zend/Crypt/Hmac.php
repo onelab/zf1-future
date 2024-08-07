@@ -108,8 +108,8 @@ class Zend_Crypt_Hmac extends Zend_Crypt
      * Setter for the hash method.
      *
      * @param string $hash
+     * @return void
      * @throws Zend_Crypt_Hmac_Exception
-     * @return Zend_Crypt_Hmac
      */
     protected static function _setHashAlgorithm($hash)
     {

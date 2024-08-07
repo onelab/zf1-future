@@ -116,7 +116,7 @@ class Zend_Tool_Framework_Metadata_Basic
     /**
      * getName()
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -148,7 +148,7 @@ class Zend_Tool_Framework_Metadata_Basic
     /**
      * setValue()
      *
-     * @param unknown_type $Value
+     * @param string $Value
      * @return Zend_Tool_Framework_Metadata_Basic
      */
     public function setValue($value)

@@ -197,8 +197,8 @@ class Zend_Crypt_DiffieHellman
      * @param string $publicKey
      * @param string $type
      * @param string $output
+     * @return string|null
      * @throws Zend_Crypt_DiffieHellman_Exception
-     * @return mixed
      */
     public function computeSecretKey($publicKey, $type = self::NUMBER, $output = self::NUMBER)
     {

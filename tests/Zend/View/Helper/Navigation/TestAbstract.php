@@ -1,4 +1,7 @@
 <?php
+
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+
 /**
  * Zend Framework
  *
@@ -41,10 +44,9 @@ require_once 'Zend/Navigation.php';
  * @group      Zend_View
  * @group      Zend_View_Helper
  */
-abstract class Zend_View_Helper_Navigation_TestAbstract
-    extends PHPUnit_Framework_TestCase
+abstract class Zend_View_Helper_Navigation_TestAbstract extends TestCase
 {
-    const REGISTRY_KEY = 'Zend_Navigation';
+    public const REGISTRY_KEY = 'Zend_Navigation';
 
     /**
      * Path to files needed for test
@@ -94,7 +96,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract
      * Prepares the environment before running a test
      *
      */
-    protected function setUp()
+    protected function set_up()
     {
         $cwd = dirname(__FILE__);
 
@@ -128,7 +130,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract
      * Cleans up the environment after running a test
      *
      */
-    protected function tearDown()
+    protected function tear_down()
     {
         $front = Zend_Controller_Front::getInstance();
 
@@ -152,7 +154,7 @@ abstract class Zend_View_Helper_Navigation_TestAbstract
     /**
      * Sets up ACL
      *
-     * @return Zend_Acl
+     * @return array
      */
     protected function _getAcl()
     {
@@ -185,13 +187,13 @@ abstract class Zend_View_Helper_Navigation_TestAbstract
     protected function _getTranslator()
     {
         $data = [
-            'Page 1'       => 'Side 1',
-            'Page 1.1'     => 'Side 1.1',
-            'Page 2'       => 'Side 2',
-            'Page 2.3'     => 'Side 2.3',
+            'Page 1' => 'Side 1',
+            'Page 1.1' => 'Side 1.1',
+            'Page 2' => 'Side 2',
+            'Page 2.3' => 'Side 2.3',
             'Page 2.3.3.1' => 'Side 2.3.3.1',
-            'Home'         => 'Hjem',
-            'Go home'      => 'Gå hjem'
+            'Home' => 'Hjem',
+            'Go home' => 'Gå hjem'
         ];
 
         return new Zend_Translate('array', $data, 'nb_NO');

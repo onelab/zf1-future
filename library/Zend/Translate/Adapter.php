@@ -192,7 +192,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  array|Zend_Config $options Options and translations to be added
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function addTranslation($options = [])
     {
@@ -214,7 +214,7 @@ abstract class Zend_Translate_Adapter {
         } else if (!is_array($options)) {
             $options = ['content' => $options];
         }
-        
+
         if (!isset($options['content']) || empty($options['content'])) {
             require_once 'Zend/Translate/Exception.php';
             throw new Zend_Translate_Exception("Required option 'content' is missing");
@@ -254,7 +254,7 @@ abstract class Zend_Translate_Adapter {
                 ),
                 RecursiveIteratorIterator::SELF_FIRST
             );
-            
+
             foreach ($iterator as $directory => $info) {
                 $file = $info->getFilename();
                 if (is_array($options['ignore'])) {
@@ -323,7 +323,7 @@ abstract class Zend_Translate_Adapter {
                     }
                 }
             }
-            
+
             unset($iterator);
         } else {
             $this->_addTranslationData($options);
@@ -341,7 +341,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  array $options Adapter options
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function setOptions(array $options = [])
     {
@@ -424,7 +424,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  string|Zend_Locale $locale Locale to set
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     public function setLocale($locale)
     {
@@ -505,7 +505,7 @@ abstract class Zend_Translate_Adapter {
      *
      * @param  string             $message Message to get the key for
      * @param  string|Zend_Locale $locale (optional) Language to return the message ids from
-     * @return string|array|false
+     * @return false|int|string
      */
     public function getMessageId($message, $locale = null)
     {
@@ -586,7 +586,7 @@ abstract class Zend_Translate_Adapter {
      * @see    Zend_Locale
      * @param  array|Zend_Config $content Translation data to add
      * @throws Zend_Translate_Exception
-     * @return Zend_Translate_Adapter Provides fluent interface
+     * @return $this
      */
     private function _addTranslationData($options = [])
     {

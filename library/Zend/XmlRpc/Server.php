@@ -117,6 +117,11 @@ require_once 'Zend/Server/Reflection/Method.php';
 class Zend_XmlRpc_Server extends Zend_Server_Abstract
 {
     /**
+     * @var mixed|\Zend_XmlRpc_Server_System
+     */
+    protected $_system;
+
+    /**
      * Character encoding
      * @var string
      */
@@ -482,7 +487,7 @@ class Zend_XmlRpc_Server extends Zend_Server_Abstract
     /**
      * Retrieve dispatch table
      *
-     * @return array
+     * @return Zend_Server_Definition
      */
     public function getDispatchTable()
     {

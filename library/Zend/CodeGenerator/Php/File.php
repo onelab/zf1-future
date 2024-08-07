@@ -388,13 +388,13 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
         $output = '';
 
         // start with the body (if there), or open tag
-        if (preg_match('#(?:\s*)<\?php#', $this->getBody()) == false) {
+        if (preg_match('#(?:\s*)<\?php#', (string) $this->getBody()) == false) {
             $output = '<?php' . self::LINE_FEED;
         }
 
         // if there are markers, put the body into the output
         $body = $this->getBody();
-        if (preg_match('#/\* Zend_CodeGenerator_Php_File-(.*?)Marker#', $body)) {
+        if (preg_match('#/\* Zend_CodeGenerator_Php_File-(.*?)Marker#', (string) $body)) {
             $output .= $body;
             $body    = '';
         }
@@ -430,7 +430,7 @@ class Zend_CodeGenerator_Php_File extends Zend_CodeGenerator_Php_Abstract
             foreach ($classes as $class) {
                 if($this->getDocblock() == $class->getDocblock()) {
                     $class->setDocblock(null);
-                }                   
+                }
                 $regex = str_replace('?', $class->getName(), self::$_markerClass);
                 $regex = preg_quote($regex, '#');
                 if (preg_match('#'.$regex.'#', $output)) {

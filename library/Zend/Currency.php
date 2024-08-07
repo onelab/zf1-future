@@ -298,8 +298,8 @@ class Zend_Currency
      *
      * @param  string             $currency (Optional) Currency name
      * @param  string|Zend_Locale $locale   (Optional) Locale to display informations
+     * @return array The extracted locale representation as string
      * @throws Zend_Currency_Exception When locale contains no region
-     * @return string The extracted locale representation as string
      */
     private function _checkParams($currency = null, $locale = null)
     {
@@ -545,7 +545,7 @@ class Zend_Currency
      *
      * @param  string|Zend_Locale $locale (Optional) Locale for parsing input
      * @throws Zend_Currency_Exception When the given locale does not exist
-     * @return Zend_Currency Provides fluent interface
+     * @return $this
      */
     public function setLocale($locale = null)
     {
@@ -679,7 +679,7 @@ class Zend_Currency
      *
      * @param float|integer|Zend_Currency $value    Compares the currency with this value
      * @param string|Zend_Currency        $currency The currency to compare this value from
-     * @return Zend_Currency
+     * @return int
      */
     public function compare($value, $currency = null)
     {
